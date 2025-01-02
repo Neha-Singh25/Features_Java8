@@ -8,20 +8,28 @@ import java.util.Optional;
 public class Question1Matching {
 	public static void main(String[] args) {
 		Persons p1 = new Persons("John","USA");
-		Persons p2 = new Persons("Steve","Japan");
+		Persons p2 = new Persons("Shiv","India");
 		Persons p3 = new Persons("Aashutosh","India");
 		Persons p4 = new Persons("Ching","China");
 		
 		List<Persons> persons = Arrays.asList(p1,p2,p3,p4);
 		
+//		Optional<Persons> findFirst = persons.stream()
+//											.filter(p -> p.country.equals("India"))
+//											.findFirst();
+//		
+		
 		Optional<Persons> findFirst = persons.stream()
-											.filter(p -> p.country.equals("Inida"))
-											.findFirst();
+				.filter(p -> p.country.equals("India"))
+				.findAny();
+
 		
 		if(findFirst.isPresent()) {
 			System.out.println(findFirst.get());
 		}
-		
+		else {
+			System.out.println("Anyone not present.");
+		}
 	}
 }
 class Persons{
