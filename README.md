@@ -46,6 +46,28 @@ This repository contains my exploration and practice files for the features intr
 
 ---
 
+## New Updates ✨
+### Added Files:
+1. **Collectors**  
+   - Demonstrates the use of `Collectors` for aggregation and transformation.
+
+2. **Parallel Streams**  
+   - Examples showcasing the use of parallel processing with streams for performance optimization.
+
+3. **groupingBy()**  
+   - Code snippets categorizing data into groups using the `groupingBy()` collector.
+
+4. **Matching**  
+   - Practical use of `allMatch`, `anyMatch`, and `noneMatch` methods for element validation.
+
+5. **Spliterator**  
+   - Example exploring `Spliterator` for partitioning and iterating collections efficiently.
+
+6. **Practice Question**  
+   - An additional challenge for hands-on practice with Java 8 features.
+
+---
+
 ## Exploring and Continuing this Journey ✨  
 Java 8 is packed with features that transform the way we code. While I’ve covered the basics, there’s always more to learn and discover. This repository will continue to evolve as I dive deeper into advanced topics and refine my skills.  
 
