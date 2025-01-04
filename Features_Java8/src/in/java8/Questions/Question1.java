@@ -10,21 +10,21 @@ import java.util.stream.Collectors;
 
 public class Question1 {
 	public static void main(String[] args) {
-		Emp e1 = new Emp(1, "Rahul", 26500.00);
-		Emp e2 = new Emp(2, "Anika", 36500.00);
-		Emp e3 = new Emp(3, "Chitra", 46500.00);
-		Emp e4 = new Emp(4, "Danish", 16500.00);
-		Emp e5 = new Emp(5, "Chetna", 25500.00);
+		Employee e1 = new Employee(1, "Rahul", 26500.00);
+		Employee e2 = new Employee(2, "Anika", 36500.00);
+		Employee e3 = new Employee(3, "Chitra", 46500.00);
+		Employee e4 = new Employee(4, "Danish", 16500.00);
+		Employee e5 = new Employee(5, "Chetna", 25500.00);
 		
-		List<Emp> list = Arrays.asList(e1,e2,e3,e4,e5);
+		List<Employee> list = Arrays.asList(e1,e2,e3,e4,e5);
 		
 		
 		//Stream<Emp> stream = Stream.of(e1,e2,e3,e4,e5);
-		Optional<Emp> maxSalary = list.stream().collect(Collectors.maxBy(Comparator.comparing(e -> e.salary)));
+		Optional<Employee> maxSalary = list.stream().collect(Collectors.maxBy(Comparator.comparing(e -> e.salary)));
 		System.out.println("Max Salary :->" + maxSalary.get().salary);
 		
 		System.out.println("----------------------");
-		Optional<Emp> minSalary = list.stream().collect(Collectors.minBy(Comparator.comparing(e -> e.salary)));
+		Optional<Employee> minSalary = list.stream().collect(Collectors.minBy(Comparator.comparing(e -> e.salary)));
 		System.out.println("Min Salary :->" + minSalary.get().salary);
 		
 		System.out.println("----------------------");
@@ -32,12 +32,12 @@ public class Question1 {
 		System.out.println("Avg. Salary :->" + avgSalary);
 	}
 }
-class Emp{
+class Employee{
 	int id;
 	String name;
 	double salary;
 	
-	Emp(int id, String name, double salary){
+	Employee(int id, String name, double salary){
 		
 		this.id  = id;
 		this.name = name;
