@@ -52,6 +52,38 @@ public class Question2 {
 		System.out.println("-----------------------------------------");
 		//5. Get the names of all employees who have joined after 2015 ?
 		empList.stream().filter(e -> e.yearOfJoining > 2015).map(e -> e.name).forEach(name -> System.out.println(name));
+		
+		System.out.println("-----------------------------------------");
+		//6. Count the number of employees in each department?
+		Map<String, Long> Res2= empList.stream().collect(Collectors.groupingBy(Emp::getDept, Collectors.counting()));
+		System.out.println(Res2);
+		
+		System.out.println("-----------------------------------------");
+		//7. What is the average salary of each department?
+		Map<String, Double> Res3 =  empList.stream().collect(Collectors.groupingBy(Emp::getDept, Collectors.averagingDouble(Emp::getSalary)));
+		System.out.println(Res3);
+		
+		System.out.println("-----------------------------------------");
+		//8. Get the details of youngest male employee in the Development department?
+		Optional<Emp> optionals = empList.stream().filter(e -> e.getGender().equals("Male") && e.getDept().equals("Development")).min(Comparator.comparing(Emp::getAge));
+		if(optionals.isPresent()) {
+			System.out.println(optionals.get());
+		}
+		
+		System.out.println("-----------------------------------------");
+		//9. Who has the most working experience in the organization?
+		Optional<Emp> optional1 = empList.stream().collect(Collectors.minBy(Comparator.comparing(Emp::getYearOfJoining)));
+		if(optional1.isPresent()) {
+			System.out.println(optional1.get());
+		}
+		
+		System.out.println("-----------------------------------------");
+		//10. How many male and female employees are there in the Sales team?
+		Map<String, Long> map = empList.stream().filter(e -> e.getDept().equals("Sales")).collect(Collectors.groupingBy(Emp::getGender, Collectors.counting()));
+		System.out.println(map);
+		
+		System.out.println("-----------------------------------------");
+	
 	}
 }
 class Emp{
