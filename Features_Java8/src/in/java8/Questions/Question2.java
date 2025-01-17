@@ -26,7 +26,7 @@ public class Question2 {
 		empList.add(new Emp(12, "Nitin", 25, "Male", "Development", 2016, 28200.0));
 		empList.add(new Emp(13, "Swati", 27, "Female", "Finance", 2013, 21300.0));
 		empList.add(new Emp(14, "Buttler", 24, "Male", "Sales", 2017, 10700.5));
-		empList.add(new Emp(15, "", 32, "Female", "HR", 2011, 25000.0));
+		empList.add(new Emp(15, "Aditi", 32, "Female", "HR", 2011, 25000.0));
 		
 		//1. How many male and female employees are there in the organization?
 	    Map<String, Long> Res= empList.stream().collect(Collectors.groupingBy(Emp::getGender, Collectors.counting()));
@@ -83,7 +83,41 @@ public class Question2 {
 		System.out.println(map);
 		
 		System.out.println("-----------------------------------------");
-	
+		//11. What is the average salary of male and female employees?
+		Map<String, Double> Res4 =  empList.stream().collect(Collectors.groupingBy(Emp::getGender, Collectors.averagingDouble(Emp::getSalary)));
+		System.out.println(Res4);
+		
+		
+		System.out.println("-----------------------------------------");
+		//12. List down the names of all employees in each department?
+		
+		
+		
+		System.out.println("-----------------------------------------");
+		//13. What is the average salary and total salary of the whole organization?
+		System.out.println("-----------------------------------------");
+		//14. Separate the employees who are younger or equal to 25 years from those employees who are older than 25 years?
+		System.out.println("-----------------------------------------");
+		//15. Who is the oldest employee in the organization? What is his age and which department he belongs to?
+		//16. Which Employee having the highest salary?
+		Optional<Emp> opt = empList.stream().
+				collect(Collectors.maxBy(Comparator.comparing(Emp::getSalary)));
+		System.out.println(opt.get());
+		
+		//17. i want get that emp who having 2nd highest salary?
+		//    Approach:- sort emps based on salary descending order then skip first record.
+		
+		//Soln 1:-
+		Optional<Emp> findfirst = empList.stream()
+			   .sorted(Comparator.comparing(Emp::getSalary).reversed())
+			   .skip(1).findFirst();
+		System.out.println(findfirst.get());
+		//Soln 2:-
+		List<Emp> collect = empList.stream()
+		.sorted(Comparator.comparing(Emp::getSalary).reversed())
+		.collect(Collectors.toList());
+		System.out.println(collect.get(1));
+		
 	}
 }
 class Emp{
